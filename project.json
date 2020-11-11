@@ -1,7 +1,7 @@
 {
   "name": "RPA_Final_Project",
   "description": "Final Project for RPA",
-  "main": "Main.xaml",
+  "main": "Income_report.xaml",
   "dependencies": {
     "Microsoft.Activities.Extensions": "[2.0.6.9]",
     "UiPath.Excel.Activities": "[2.7.2]",
