@@ -274,6 +274,37 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
+    <Assign sap:VirtualizedContainerService.HintSize="718.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_17">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[outputExcelPath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">[".\total_report\" + selectedYear.ToString +  "\wiput888.me หวยไทย " + selectedLotto.ToString + " (Responses).xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:PathExists DisplayName="Path Exists" Exists="[outputExist]" sap:VirtualizedContainerService.HintSize="718.666666666667,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;.\total_report\&quot; + selectedYear.ToString]" PathType="Folder" />
+    <If Condition="[Not outputExist]" sap:VirtualizedContainerService.HintSize="718.666666666667,239.333333333333" sap2010:WorkflowViewState.IdRef="If_13">
+      <If.Then>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;.\total_report\&quot; + selectedYear.ToString]" />
+      </If.Then>
+    </If>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="718.666666666667,287.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="[outputExcelPath]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,178.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[totalDataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
     <Assign sap:VirtualizedContainerService.HintSize="718.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_24">
       <Assign.To>
         <OutArgument x:TypeArguments="ui:GenericValue">[mailBody]</OutArgument>
@@ -308,40 +339,11 @@
     </ui:ForEachRow>
     <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[mailBody]" DisplayName="Send SMTP Mail Message" Email="60070090@it.kmitl.ac.th" EnableSSL="True" From="rewatd@wiput888.me" sap:VirtualizedContainerService.HintSize="718.666666666667,149.333333333333" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Name="wiput888.me" Password="ecdinpdmonmovdgm" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[&quot;รายงานรายได้ประจำวันที่ &quot; + selectedLotto.ToString]" To="[email]">
       <ui:SendMail.Files>
-        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">[outputExcelPath]</InArgument>
+        </scg:List>
       </ui:SendMail.Files>
     </ui:SendMail>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="718.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Send report to &quot; + email + &quot; with body &quot; + mailBody]" />
-    <Assign sap:VirtualizedContainerService.HintSize="718.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_17">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[outputExcelPath]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String" xml:space="preserve">[".\total_report\" + selectedYear.ToString +  "\wiput888.me หวยไทย " + selectedLotto.ToString + " (Responses).xlsx"]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:PathExists DisplayName="Path Exists" Exists="[outputExist]" sap:VirtualizedContainerService.HintSize="718.666666666667,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;.\total_report\&quot; + selectedYear.ToString]" PathType="Folder" />
-    <If Condition="[Not outputExist]" sap:VirtualizedContainerService.HintSize="718.666666666667,239.333333333333" sap2010:WorkflowViewState.IdRef="If_13">
-      <If.Then>
-        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;.\total_report\&quot; + selectedYear.ToString]" />
-      </If.Then>
-    </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="718.666666666667,287.333333333333" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="[outputExcelPath]">
-      <ui:ExcelApplicationScope.Body>
-        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,178.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelWriteRange AddHeaders="True" DataTable="[totalDataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
-          </Sequence>
-        </ActivityAction>
-      </ui:ExcelApplicationScope.Body>
-    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>
