@@ -1,10 +1,10 @@
 {
   "name": "RPA_Final_Project",
   "description": "Final Project for RPA",
-  "main": "Main.xaml",
+  "main": "Save_Google_Form.xaml",
   "dependencies": {
     "Microsoft.Activities.Extensions": "[2.0.6.9]",
-    "UiPath.Excel.Activities": "[2.7.2]",
+    "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.7.2]",
     "UiPath.System.Activities": "[19.10.1]",
     "UiPath.UIAutomation.Activities": "[19.11.3]",
@@ -33,6 +33,10 @@
       "privateWorkflows": []
     },
     "fileInfos": []
+  },
+  "arguments": {
+    "input": [],
+    "output": []
   },
   "expressionLanguage": "VisualBasic"
 }
