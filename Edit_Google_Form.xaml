@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Edit_GForms" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="656,3005.6" sap2010:WorkflowViewState.IdRef="Edit_GForms_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Edit_GForms" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="656,3168.8" sap2010:WorkflowViewState.IdRef="Edit_GForms_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
       <x:String>System.Activities</x:String>
@@ -26,7 +26,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -45,9 +45,10 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="บอทตัวนี้จะทำการเปิด Google form และทำการแก้หัวข้อฟอร์มเป็นงวดถัดไป และทำการ Active ให้ฟอร์มรับคำตอบรับได้" DisplayName="Main Sequence - Edit Google Form" sap:VirtualizedContainerService.HintSize="636,2945.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="บอทตัวนี้จะทำการเปิด Google form และทำการแก้หัวข้อฟอร์มเป็นงวดถัดไป และทำการ Active ให้ฟอร์มรับคำตอบรับได้" DisplayName="Main Sequence - Edit Google Form" sap:VirtualizedContainerService.HintSize="636,3108.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Day" />
       <Variable x:TypeArguments="x:String" Name="Month" />
@@ -314,13 +315,13 @@
         </Assign>
       </Switch>
     </Sequence>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser - Google Forms" sap:VirtualizedContainerService.HintSize="594.4,2418.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://docs.google.com/forms/d/13buQq7SCbvpbHHhibDaiKsEq8lk1dmxuHxjldg1MZZ0/edit?usp=sharing">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser - Google Forms" sap:VirtualizedContainerService.HintSize="594.4,2581.6" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://docs.google.com/forms/d/13buQq7SCbvpbHHhibDaiKsEq8lk1dmxuHxjldg1MZZ0/edit?usp=sharing">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="do" sap:VirtualizedContainerService.HintSize="560.8,2318.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="do" sap:VirtualizedContainerService.HintSize="560.8,2481.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="isLoaded" />
               <Variable x:TypeArguments="x:Boolean" Name="isAcceptValid" />
@@ -424,28 +425,48 @@
                 </Sequence>
               </If.Then>
             </If>
-            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Response Tabs" sap:VirtualizedContainerService.HintSize="519.2,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
-              <ui:Click.CursorPosition>
-                <ui:CursorPosition Position="Center">
-                  <ui:CursorPosition.OffsetX>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetX>
-                  <ui:CursorPosition.OffsetY>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetY>
-                </ui:CursorPosition>
-              </ui:Click.CursorPosition>
-              <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="8e21bead8f432a1ec3c26b2997889d3d" Selector="&lt;webctrl aaname='Responses' parentid='tJHJj' tag='DIV' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:Click.Target>
-            </ui:Click>
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="519.2,270.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Response Tabs" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="8e21bead8f432a1ec3c26b2997889d3d" Selector="&lt;webctrl aaname='Responses' parentid='tJHJj' tag='DIV' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:Click.Target>
+                </ui:Click>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="ui:SelectorNotFoundException" sap:VirtualizedContainerService.HintSize="400,105.6" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="ui:SelectorNotFoundException">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:SelectorNotFoundException" Name="exception" />
+                    </ActivityAction.Argument>
+                    <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[exception]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="กรุณาลงชื่อเข้าใช้ด้วยบัญชีที่มีฟอร์มอยู่" />
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
             <ui:ImageFound DisplayName="Image Exists 'chrome.exe wiput888.me'" Found="[isAcceptValid]" sap:VirtualizedContainerService.HintSize="519.2,107.2" sap2010:WorkflowViewState.IdRef="ImageFound_1">
               <ui:ImageFound.Image>
                 <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="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" />
